@@ -1,20 +1,15 @@
 package fergaral.autoshorten.services
 
 import android.app.Service
-import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
 import android.os.IBinder
 import android.preference.PreferenceManager
 import android.support.v4.content.ContextCompat
-import android.util.Log
-import android.util.Patterns
-import fergaral.autoshorten.MainActivity
-import fergaral.autoshorten.NotificationHelper
 import fergaral.autoshorten.listeners.ClipboardListener
-import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.uiThread
+import fergaral.autoshorten.ui.MainActivity
+import fergaral.autoshorten.util.NotificationHelper
 
 
 class ClipboardService : Service() {
