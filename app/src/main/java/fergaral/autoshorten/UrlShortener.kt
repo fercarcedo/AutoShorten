@@ -26,7 +26,7 @@ class UrlShortener {
         val url = Url()
         url.setLongUrl(sourceUrl)
         val insert = urlshortener.url().insert(url)
-        insert.setKey("GOOGLE_URLSHORTNER_API_KEY_HERE")
+        insert.setKey("AIzaSyBEYT61xYr0mfFZE-lBAZFP8v8yRxFT9nE")
         return insert.execute().id
     }
 }

@@ -69,7 +69,9 @@ class MainActivity : AppCompatActivity() {
         val sharedText = intent.getStringExtra(Intent.EXTRA_TEXT)
         if (sharedText != null && sharedText.isURL()) {
             showProgress()
-            doAsync(exceptionHandler = { _ -> Utils.showShortenError(this) }) {
+            doAsync(exceptionHandler = { _ ->
+                Utils.showShortenError(this, { hideProgress() })
+            }) {
                 val shortUrl = UrlShortener().shortenUrl(sharedText)
                 activityUiThread {
                     hideProgress()
@@ -89,12 +91,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun showProgress() {
         mainLayout.hide()
+        fab.hide()
         progressBar.show()
     }
 
     private fun hideProgress() {
         progressBar.hide()
         mainLayout.show()
+        fab.show()
     }
 
     companion object {

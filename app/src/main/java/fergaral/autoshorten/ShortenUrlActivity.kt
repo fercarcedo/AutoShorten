@@ -57,7 +57,9 @@ class ShortenUrlActivity: AppCompatActivity() {
         val longUrl = etURL.text.toString()
         if (longUrl.isURL()) {
             pbShorten.show()
-            doAsync(exceptionHandler = { _ -> Utils.showShortenError(this) }) {
+            doAsync(exceptionHandler = { _ ->
+                Utils.showShortenError(this, { dismiss(null) })
+            }) {
                 val shortUrl = UrlShortener().shortenUrl(longUrl)
                 activityUiThread {
                     clipboardManager.copyText(shortUrl)

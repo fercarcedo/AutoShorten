@@ -1,6 +1,6 @@
 package fergaral.autoshorten
 
-import android.content.Context
+import android.app.Activity
 import android.widget.Toast
 
 /**
@@ -8,8 +8,11 @@ import android.widget.Toast
  */
 class Utils {
     companion object {
-        fun showShortenError(context: Context) {
-            Toast.makeText(context, context.getString(R.string.shorten_error), Toast.LENGTH_SHORT).show()
+        fun showShortenError(activity: Activity, handler: () -> Unit) {
+            activity.runOnUiThread {
+                handler()
+                Toast.makeText(activity, activity.getString(R.string.shorten_error), Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }
