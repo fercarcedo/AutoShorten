@@ -1,4 +1,4 @@
-package fergaral.autoshorten
+package fergaral.autoshorten.util
 
 import android.content.ClipData
 import android.content.ClipboardManager

@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
+        <activity android:name=".ui.MainActivity"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,17 +24,17 @@
                 <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
-        <activity android:name=".ShortenUrlActivity"
+        <activity android:name=".ui.ShortenUrlActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize"
             android:theme="@style/DialogTranslucent" />
 
         <service
-            android:name=".ClipboardService"
+            android:name=".services.ClipboardService"
             android:enabled="true"
-            android:exported="false"></service>
+            android:exported="false" />
 
-        <receiver android:name=".BootReceiver"
+        <receiver android:name=".receivers.BootReceiver"
             android:exported="false"
             android:enabled="true">
             <intent-filter>

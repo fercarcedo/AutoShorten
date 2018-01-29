@@ -1,4 +1,4 @@
-package fergaral.autoshorten
+package fergaral.autoshorten.ui
 
 import android.app.Activity
 import android.content.ClipboardManager
@@ -10,6 +10,8 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.Toast
+import fergaral.autoshorten.R
+import fergaral.autoshorten.util.*
 import kotlinx.android.synthetic.main.activity_shorten_url.*
 import org.jetbrains.anko.activityUiThread
 import org.jetbrains.anko.doAsync

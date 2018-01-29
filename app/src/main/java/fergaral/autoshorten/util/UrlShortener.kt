@@ -1,4 +1,4 @@
-package fergaral.autoshorten
+package fergaral.autoshorten.util
 
 import android.util.Log
 import com.google.api.client.extensions.android.http.AndroidHttp

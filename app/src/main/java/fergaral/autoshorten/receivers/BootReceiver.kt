@@ -1,8 +1,9 @@
-package fergaral.autoshorten
+package fergaral.autoshorten.receivers
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import fergaral.autoshorten.services.ClipboardService
 
 /**
  * Created by Fer on 28/01/2018.

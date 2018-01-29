@@ -1,6 +1,10 @@
-package fergaral.autoshorten
+package fergaral.autoshorten.listeners
 
 import android.content.ClipboardManager
+import fergaral.autoshorten.UrlShortener
+import fergaral.autoshorten.util.copyText
+import fergaral.autoshorten.util.getClipboardText
+import fergaral.autoshorten.util.isURL
 import org.jetbrains.anko.doAsync
 
 /**

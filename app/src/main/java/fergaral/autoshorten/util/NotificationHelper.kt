@@ -1,4 +1,4 @@
-package fergaral.autoshorten
+package fergaral.autoshorten.util
 
 import android.annotation.TargetApi
 import android.app.Notification
@@ -10,6 +10,8 @@ import android.content.ContextWrapper
 import android.content.Intent
 import android.os.Build
 import android.support.v4.app.NotificationCompat
+import fergaral.autoshorten.R
+import fergaral.autoshorten.ui.MainActivity
 
 /**
  * Created by Fer on 27/01/2018.

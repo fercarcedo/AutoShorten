@@ -1,7 +1,8 @@
-package fergaral.autoshorten
+package fergaral.autoshorten.util
 
 import android.app.Activity
 import android.widget.Toast
+import fergaral.autoshorten.R
 
 /**
  * Created by Fer on 29/01/2018.

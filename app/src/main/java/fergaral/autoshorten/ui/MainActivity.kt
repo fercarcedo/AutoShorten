@@ -1,4 +1,4 @@
-package fergaral.autoshorten
+package fergaral.autoshorten.ui
 
 import android.app.ActivityOptions
 import android.app.NotificationManager
@@ -11,6 +11,9 @@ import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.app.ShareCompat
 import android.util.Log
 import android.widget.Toast
+import fergaral.autoshorten.R
+import fergaral.autoshorten.services.ClipboardService
+import fergaral.autoshorten.util.*
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.activityUiThread
 import org.jetbrains.anko.doAsync
