@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">AutoShorten</string>
+    <string name="main_channel">Notificaciones generales</string>
+    <string name="clipboard_notification_text">Copia un enlace para acortarlo automáticamente</string>
+    <string name="clipboard_notification_ticker">Escuchando portapapeles&#8230;</string>
+    <string name="share_shorten_url">Compartir enlace acortado</string>
+    <string name="shorten_copy_url_text">Acorta automáticamente cualquier URL que copies</string>
+    <string name="shorten_share_url_text">Comparte cualquier URL con AutoShorten para acortarla fácilmente</string>
+    <string name="shorten_url">Acortar URL</string>
+    <string name="shorten">Acortar</string>
+    <string name="shortened_url_copied">URL acortada copiada al portapapeles</string>
+    <string name="url_format_incorrect">El formato de la URL es incorrecto</string>
+    <string name="shorten_error">Ha habido un error acortando la URL</string>
+</resources>

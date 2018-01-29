@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">AutoShorten</string>
+    <string name="main_channel">General notifications</string>
+    <string name="clipboard_notification_text">Copy a link to automatically shorten it</string>
+    <string name="clipboard_notification_ticker">Listening clipboard&#8230;</string>
+    <string name="share_shorten_url">Share shorten url</string>
+    <string name="shorten_copy_url_text">Automatically shorten any URL you copy</string>
+    <string name="shorten_share_url_text">Share any URL with AutoShorten to easily shorten it</string>
+    <string name="transition_shorten_url" translatable="false">transition_shorten_url</string>
+    <string name="shorten_url">Shorten URL</string>
+    <string name="URL" translatable="false">URL</string>
+    <string name="shorten">Shorten</string>
+    <string name="shortened_url_copied">Shortened url copied to clipboard</string>
+    <string name="url_format_incorrect">The URL format is incorrect</string>
+    <string name="shorten_error">There has been an error shortening the URL</string>
+</resources>

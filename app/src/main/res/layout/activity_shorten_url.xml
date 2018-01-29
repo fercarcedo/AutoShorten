@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:onClick="dismiss">
+
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_large"
+        android:layout_marginEnd="@dimen/spacing_large"
+        android:paddingStart="@dimen/padding_normal"
+        android:paddingTop="@dimen/padding_dialog"
+        android:paddingEnd="@dimen/padding_dialog"
+        android:paddingBottom="@dimen/padding_normal"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:elevation="@dimen/z_fab"
+        android:background="@drawable/dialog_background"
+        android:clickable="true"
+        android:focusable="true"
+        android:transitionName="@string/transition_shorten_url">
+
+        <TextView
+            android:id="@+id/dialog_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dialog_title_spacing"
+            android:layout_marginStart="@dimen/spacing_normal"
+            android:text="@string/shorten_url"
+            android:textAppearance="@style/TextAppearance.DialogTitle" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/url_float_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_micro">
+
+            <EditText
+                android:id="@+id/etURL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/URL"
+                android:inputType="textUri"
+                android:selectAllOnFocus="true" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <ProgressBar
+            android:id="@+id/pbShorten"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?android:attr/progressBarStyle"
+            android:layout_gravity="center_horizontal"
+            android:visibility="gone"/>
+
+        <FrameLayout
+            android:id="@+id/actions_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_normal">
+
+            <Button
+                android:id="@+id/btnShorten"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:enabled="false"
+                android:text="@string/shorten"
+                android:background="@drawable/dialog_button"
+                android:foreground="?attr/selectableItemBackground"
+                android:textAppearance="@style/TextAppearance.DarkButton"
+                android:onClick="shorten" />
+
+        </FrameLayout>
+    </LinearLayout>
+</FrameLayout>

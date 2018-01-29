@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding_normal">16dp</dimen>
+    <dimen name="spacing_micro">4dp</dimen>
+    <dimen name="spacing_normal">8dp</dimen>
+    <dimen name="padding_dialog">24dp</dimen>
+    <dimen name="dialog_title_spacing">20dp</dimen>
+    <dimen name="spacing_large">32dp</dimen>
+    <dimen name="z_fab">6dp</dimen>
+    <dimen name="dialog_corners">2dp</dimen>
+</resources>
