@@ -17,12 +17,12 @@ class ClipboardService : Service() {
         getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
     }
 
-    private var clipboardListener: ClipboardManager.OnPrimaryClipChangedListener? = null
+    private lateinit var clipboardListener: ClipboardManager.OnPrimaryClipChangedListener
 
     override fun onCreate() {
         super.onCreate()
         startForeground()
-        clipboardListener = ClipboardListener(clipboardManager)
+        clipboardListener = ClipboardListener(clipboardManager, applicationContext)
         clipboardManager.addPrimaryClipChangedListener(clipboardListener)
     }
 
