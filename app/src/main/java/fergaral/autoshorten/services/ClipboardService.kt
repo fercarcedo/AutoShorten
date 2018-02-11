@@ -7,9 +7,11 @@ import android.content.Intent
 import android.os.IBinder
 import android.preference.PreferenceManager
 import android.support.v4.content.ContextCompat
+import dagger.android.AndroidInjection
 import fergaral.autoshorten.listeners.ClipboardListener
 import fergaral.autoshorten.ui.MainActivity
 import fergaral.autoshorten.util.NotificationHelper
+import javax.inject.Inject
 
 
 class ClipboardService : Service() {
@@ -17,12 +19,13 @@ class ClipboardService : Service() {
         getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
     }
 
-    private lateinit var clipboardListener: ClipboardManager.OnPrimaryClipChangedListener
+    @Inject
+    lateinit var clipboardListener: ClipboardManager.OnPrimaryClipChangedListener
 
     override fun onCreate() {
+        AndroidInjection.inject(this)
         super.onCreate()
         startForeground()
-        clipboardListener = ClipboardListener(clipboardManager, applicationContext)
         clipboardManager.addPrimaryClipChangedListener(clipboardListener)
     }
 

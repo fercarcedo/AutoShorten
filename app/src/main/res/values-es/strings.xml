@@ -11,4 +11,10 @@
     <string name="shortened_url_copied">URL acortada copiada al portapapeles</string>
     <string name="url_format_incorrect">El formato de la URL es incorrecto</string>
     <string name="shorten_error">Ha habido un error acortando la URL</string>
+    <string name="shortener">Acortador</string>
+    <string name="domains_to_shorten">Dominios a acortar</string>
+    <string name="new_domain">Nuevo dominio</string>
+    <string name="delete_domain">Eliminar dominio</string>
+    <string name="domain_already_exists">El dominio ya existe</string>
+    <string name="no_domains">Acortando todos los dominios. Pulsa el botón para elegir solo algunos dominios para acortar</string>
 </resources>

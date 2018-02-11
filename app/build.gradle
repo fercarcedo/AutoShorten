@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 27
@@ -20,11 +20,20 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    buildTypes.each {
+        it.buildConfigField 'String', 'GOOGL_API_KEY', GooglApiKey
+        it.buildConfigField 'String', 'BITLY_API_KEY', BitlyApiKey
+    }
     configurations {
         all {
             exclude module: 'httpclient'
         }
     }
+    android.defaultConfig.vectorDrawables.useSupportLibrary = true
+}
+
+kapt {
+    generateStubs = true
 }
 
 dependencies {
@@ -32,9 +41,19 @@ dependencies {
     implementation 'com.google.apis:google-api-services-urlshortener:v1-rev50-1.23.0'
     implementation "org.jetbrains.anko:anko:0.10.4"
     implementation 'com.google.api-client:google-api-client-android:1.23.0'
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:27.0.2'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation 'com.android.support:cardview-v7:27.0.2'
     implementation 'com.android.support:design:27.0.2'
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    implementation "android.arch.persistence.room:runtime:1.0.0"
+    implementation "android.arch.lifecycle:extensions:1.1.0"
+    implementation 'com.google.dagger:dagger:2.14.1'
+    implementation 'com.google.dagger:dagger-android:2.14.1'
+    implementation 'com.google.dagger:dagger-android-support:2.14.1'
+    kapt 'com.google.dagger:dagger-compiler:2.14.1'
+    kapt "android.arch.persistence.room:compiler:1.0.0"
+    kapt 'com.google.dagger:dagger-android-processor:2.14.1'
 }

@@ -1,15 +1,15 @@
 package fergaral.autoshorten.ui
 
-import android.app.ActivityOptions
-import android.app.NotificationManager
-import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.app.ShareCompat
-import android.util.Log
+import android.view.Menu
+import android.view.View
+import android.widget.AdapterView
+import android.widget.Spinner
 import android.widget.Toast
 import fergaral.autoshorten.R
 import fergaral.autoshorten.services.ClipboardService
@@ -17,7 +17,9 @@ import fergaral.autoshorten.util.*
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.activityUiThread
 import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.uiThread
+import android.widget.ArrayAdapter
+import fergaral.autoshorten.shorteners.UrlShortenerFactory
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -46,6 +48,41 @@ class MainActivity : AppCompatActivity() {
         }
 
         fab.setOnClickListener { fabClick() }
+        chooseDomainsBtn.setOnClickListener { startActivity(Intent(this, DomainsToShortenActivity::class.java ))}
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+
+        if (menu != null) {
+            val item = menu.findItem(R.id.spShortener)
+            val spinner = item.actionView as Spinner
+            val spinnerItems = listOf("goo.gl", "bit.ly")
+            val spinnerArrayAdapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,
+                    spinnerItems)
+            spinnerArrayAdapter.setDropDownViewResource(android.R.layout
+                    .simple_spinner_dropdown_item)
+            spinner.adapter = spinnerArrayAdapter
+            val selectedUrlShortener = PreferenceManager.getDefaultSharedPreferences(this).getString(UrlShortenerFactory.URL_SHORTENER_KEY, UrlShortenerFactory.URL_SHORTENER_DEFAULT)
+            spinner.setSelection(spinnerItems.indexOf(selectedUrlShortener))
+            spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    shortenProviderChosen(parent?.getItemAtPosition(position) as String)
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+
+                }
+            }
+        }
+
+        return true
+    }
+
+    private fun shortenProviderChosen(selectedItem: String) {
+        val preferenceEditor = PreferenceManager.getDefaultSharedPreferences(this).edit()
+        preferenceEditor.putString(UrlShortenerFactory.URL_SHORTENER_KEY, selectedItem)
+        preferenceEditor.apply()
     }
 
     private fun fabClick() {
@@ -75,7 +112,7 @@ class MainActivity : AppCompatActivity() {
             doAsync(exceptionHandler = { _ ->
                 Utils.showShortenError(this, { hideProgress() })
             }) {
-                val shortUrl = UrlShortener().shortenUrl(sharedText)
+                val shortUrl = UrlShortenerFactory.getUrlShortener(this@MainActivity).shortenUrl(sharedText)
                 activityUiThread {
                     hideProgress()
                     val shareIntent = ShareCompat.IntentBuilder.from(this@MainActivity)

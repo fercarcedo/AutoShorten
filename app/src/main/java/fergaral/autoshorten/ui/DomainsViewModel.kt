@@ -1,0 +1,29 @@
+package fergaral.autoshorten.ui
+
+import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.ViewModel
+import fergaral.autoshorten.data.Domain
+import fergaral.autoshorten.data.repository.DomainRepository
+import org.jetbrains.anko.doAsync
+import javax.inject.Inject
+
+/**
+ * Created by Fer on 10/02/2018.
+ */
+class DomainsViewModel @Inject constructor(private val repository: DomainRepository) : ViewModel() {
+    private var domains: LiveData<List<Domain>> = repository.selectAll()
+
+    fun getDomains(): LiveData<List<Domain>> = domains
+
+    fun insertDomain(domainUrl: String) {
+        doAsync {
+            repository.insert(Domain(null, domainUrl))
+        }
+    }
+
+    fun deleteDomain(domain: Domain) {
+        doAsync {
+            repository.delete(domain)
+        }
+    }
+}

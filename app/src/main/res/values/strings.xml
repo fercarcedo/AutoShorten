@@ -13,4 +13,10 @@
     <string name="shortened_url_copied">Shortened url copied to clipboard</string>
     <string name="url_format_incorrect">The URL format is incorrect</string>
     <string name="shorten_error">There has been an error shortening the URL</string>
+    <string name="shortener">Shortener</string>
+    <string name="domains_to_shorten">Domains to shorten</string>
+    <string name="new_domain">New domain</string>
+    <string name="delete_domain">Delete domain</string>
+    <string name="domain_already_exists">Domain already exists</string>
+    <string name="no_domains">Shortening all domains. Click the button to choose specific domains to shorten</string>
 </resources>

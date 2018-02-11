@@ -6,40 +6,58 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
+        android:name=".AutoShorten"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.MainActivity"
+        <activity
+            android:name=".ui.MainActivity"
             android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
+
                 <category android:name="android.intent.category.DEFAULT" />
+
                 <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.ShortenUrlActivity"
+        <activity
+            android:name=".ui.ShortenUrlActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize"
-            android:theme="@style/DialogTranslucent" />
+            android:theme="@style/DialogTranslucent"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity android:name=".ui.DomainActivity"
+            android:parentActivityName=".ui.MainActivity"
+            android:exported="false"
+            android:theme="@style/DialogTranslucent"
+            android:windowSoftInputMode="adjustResize"  />
+
+        <activity android:name=".ui.DomainsToShortenActivity"
+            android:parentActivityName=".ui.MainActivity"
+            android:exported="false"
+            android:label="@string/domains_to_shorten" />
 
         <service
             android:name=".services.ClipboardService"
             android:enabled="true"
             android:exported="false" />
 
-        <receiver android:name=".receivers.BootReceiver"
-            android:exported="false"
-            android:enabled="true">
+        <receiver
+            android:name=".receivers.BootReceiver"
+            android:enabled="true"
+            android:exported="false">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
-                <action android:name="android.intent.action.QUICKBOOT_POWERON"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
             </intent-filter>
         </receiver>
     </application>

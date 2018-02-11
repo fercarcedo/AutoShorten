@@ -32,4 +32,8 @@
         <item name="android:textColor">@color/text_primary_dark</item>
         <item name="android:fontFamily">sans-serif-medium</item>
     </style>
+
+    <style name="ToolbarSpinner" parent="Base.Widget.AppCompat.Spinner">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
 </resources>
