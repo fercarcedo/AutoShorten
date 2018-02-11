@@ -6,7 +6,8 @@ package fergaral.autoshorten.shorteners
 abstract class UrlShortener {
     fun shortenUrl(longUrl: String): String {
         var sourceUrl = longUrl
-        if (!sourceUrl.startsWith("http"))
+        if (!sourceUrl.startsWith("http://") &&
+                !sourceUrl.startsWith("https://"))
             sourceUrl = "http://" + sourceUrl
 
         val urlObject = java.net.URL(sourceUrl)
