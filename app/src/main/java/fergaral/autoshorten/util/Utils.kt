@@ -22,7 +22,11 @@ class Utils {
             if (!url.startsWith("http://") &&
                     !url.startsWith("https://"))
                 url = "http://" + url
-            return URI(url).host
+
+            var host = URI(url).host
+            if (host.startsWith("www."))
+                host = host.substring(4)
+            return host
         }
     }
 }
