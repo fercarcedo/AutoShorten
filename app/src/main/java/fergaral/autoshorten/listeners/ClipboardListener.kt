@@ -9,6 +9,7 @@ import fergaral.autoshorten.util.copyText
 import fergaral.autoshorten.util.getClipboardText
 import fergaral.autoshorten.util.isURL
 import org.jetbrains.anko.doAsync
+import org.jetbrains.anko.uiThread
 import javax.inject.Inject
 
 /**
