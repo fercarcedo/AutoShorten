@@ -9,8 +9,9 @@ import android.content.Context
  */
 fun ClipboardManager.getClipboardText(context: Context): String? {
     if (hasPrimaryClip()) {
-        if (primaryClip.itemCount > 0) {
-            val clipboardText = primaryClip.getItemAt(0).coerceToText(context)
+        val clip = primaryClip
+        if (clip != null && clip.itemCount > 0) {
+            val clipboardText = clip.getItemAt(0).coerceToText(context)
             if (clipboardText != null)
                 return clipboardText.toString()
         }
