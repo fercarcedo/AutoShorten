@@ -1,6 +1,6 @@
 package fergaral.autoshorten.data.repository
 
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.LiveData
 import android.database.sqlite.SQLiteConstraintException
 import fergaral.autoshorten.data.Domain
 import fergaral.autoshorten.data.DomainDao

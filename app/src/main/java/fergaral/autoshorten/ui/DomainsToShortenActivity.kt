@@ -1,13 +1,14 @@
 package fergaral.autoshorten.ui
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProvider
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.ActivityOptionsCompat
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
+import androidx.core.app.ActivityOptionsCompat
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import dagger.android.AndroidInjection
 import fergaral.autoshorten.R
 import fergaral.autoshorten.data.Domain
@@ -36,7 +37,7 @@ class DomainsToShortenActivity: AppCompatActivity() {
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(DomainsViewModel::class.java)
         val adapter = DomainsAdapter(listOf(), { removeItem(it) })
         domainsRv.adapter = adapter
-        domainsRv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        domainsRv.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
 
         viewModel.getDomains().observe(this, Observer<List<Domain>> {
             if (it == null || it.count() <= 0)

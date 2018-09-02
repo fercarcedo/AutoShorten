@@ -1,7 +1,7 @@
 package fergaral.autoshorten.ui
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
 import fergaral.autoshorten.data.Domain
 import fergaral.autoshorten.data.repository.DomainRepository
 import org.jetbrains.anko.doAsync

@@ -6,7 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.IBinder
 import android.preference.PreferenceManager
-import android.support.v4.content.ContextCompat
+import androidx.core.content.ContextCompat
 import dagger.android.AndroidInjection
 import fergaral.autoshorten.listeners.ClipboardListener
 import fergaral.autoshorten.ui.MainActivity

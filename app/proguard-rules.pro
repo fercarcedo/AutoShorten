@@ -39,18 +39,18 @@
 
 ## Android architecture components: Lifecycle
 # generated GenericLifecycleObserver and it's empty constructor is considered to be unused by proguard
--keepclasseswithmembers class * implements android.arch.lifecycle.GenericLifecycleObserver {
+-keepclasseswithmembers class * implements androidx.lifecycle.GenericLifecycleObserver {
 <init>(...);
 }
 # keep Lifecycle State and Event enums with fields
--keepclassmembers class android.arch.lifecycle.Lifecycle$* { *; }
+-keepclassmembers class androidx.lifecycle.Lifecycle$* { *; }
 # keep methods annotated with @OnLifecycleEvent even if they seem to be unused
 # (Mostly for LiveData.LifecycleBoundObserver.onStateChange(), but who knows)
 -keepclassmembers class * {
-    @android.arch.lifecycle.OnLifecycleEvent *;
+    @androidx.lifecycle.OnLifecycleEvent *;
 }
 # ViewModel's empty constructor is considered to be unused by proguard
--keepclassmembers class * extends android.arch.lifecycle.ViewModel {
+-keepclassmembers class * extends androidx.lifecycle.ViewModel {
 <init>(...);
 }
 
