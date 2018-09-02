@@ -17,6 +17,7 @@ import fergaral.autoshorten.util.hide
 import fergaral.autoshorten.util.show
 import kotlinx.android.synthetic.main.activity_domains_to_shorten.*
 import kotlinx.android.synthetic.main.activity_main.*
+import org.jetbrains.anko.doAsync
 import javax.inject.Inject
 
 /**
@@ -58,6 +59,8 @@ class DomainsToShortenActivity: AppCompatActivity() {
     }
 
     private fun removeItem(domain: Domain) {
-        viewModel.deleteDomain(domain)
+        doAsync {
+            viewModel.deleteDomain(domain)
+        }
     }
 }

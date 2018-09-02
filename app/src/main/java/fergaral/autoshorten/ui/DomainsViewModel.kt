@@ -16,14 +16,10 @@ class DomainsViewModel @Inject constructor(private val repository: DomainReposit
     fun getDomains(): LiveData<List<Domain>> = domains
 
     fun insertDomain(domainUrl: String) {
-        doAsync {
-            repository.insert(Domain(null, domainUrl))
-        }
+        repository.insert(Domain(null, domainUrl))
     }
 
     fun deleteDomain(domain: Domain) {
-        doAsync {
-            repository.delete(domain)
-        }
+        repository.delete(domain)
     }
 }
