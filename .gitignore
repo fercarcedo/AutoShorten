@@ -10,3 +10,4 @@
 .externalNativeBuild
 gradle.properties
 /.idea
+app/release
