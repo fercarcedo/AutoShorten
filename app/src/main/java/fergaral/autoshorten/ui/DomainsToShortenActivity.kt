@@ -17,6 +17,7 @@ import fergaral.autoshorten.util.hide
 import fergaral.autoshorten.util.show
 import kotlinx.android.synthetic.main.activity_domains_to_shorten.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.toolbar.*
 import org.jetbrains.anko.doAsync
 import javax.inject.Inject
 
@@ -34,6 +35,8 @@ class DomainsToShortenActivity: AppCompatActivity() {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_domains_to_shorten)
+
+        setSupportActionBar(toolbar)
 
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(DomainsViewModel::class.java)
         val adapter = DomainsAdapter(listOf(), { removeItem(it) })

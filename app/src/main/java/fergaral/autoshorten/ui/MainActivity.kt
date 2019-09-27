@@ -5,6 +5,7 @@ import android.os.Build
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
@@ -24,6 +25,7 @@ import fergaral.autoshorten.util.isURL
 import fergaral.autoshorten.util.show
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.copy_url_card.*
+import kotlinx.android.synthetic.main.toolbar.*
 import org.jetbrains.anko.activityUiThread
 import org.jetbrains.anko.doAsync
 
@@ -36,6 +38,8 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null)
             ClipboardService.startIfNecessary(this)
+
+        setSupportActionBar(toolbar)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             goEdgeToEdge()
@@ -120,6 +124,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_settings) {
+            startActivity(Intent(this, SettingsActivity::class.java))
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun shortenProviderChosen(selectedItem: String) {

@@ -5,4 +5,5 @@
     <color name="scrim">#99000000</color>
     <color name="status_bar_dim">#000000</color>
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#fff</color>
+    <color name="actionMenuTextColor">#FFF</color>
 </resources>
