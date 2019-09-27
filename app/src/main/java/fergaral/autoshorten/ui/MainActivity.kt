@@ -1,10 +1,12 @@
 package fergaral.autoshorten.ui
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.view.Menu
 import android.view.View
+import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
@@ -12,6 +14,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.app.ShareCompat
+import androidx.core.view.*
 import fergaral.autoshorten.R
 import fergaral.autoshorten.services.ClipboardService
 import fergaral.autoshorten.shorteners.UrlShortenerFactory
@@ -34,6 +37,10 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null)
             ClipboardService.startIfNecessary(this)
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            goEdgeToEdge()
+        }
+
         checkSharedContent(intent)
 
         swShortenCopy.isChecked = PreferenceManager.getDefaultSharedPreferences(this)
@@ -53,6 +60,38 @@ class MainActivity : AppCompatActivity() {
 
         fab.setOnClickListener { fabClick() }
         chooseDomainsBtn.setOnClickListener { startActivity(Intent(this, DomainsToShortenActivity::class.java ))}
+    }
+
+    private fun goEdgeToEdge() {
+        mainLayout.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
+                View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+
+        handleFabInsets()
+        handleMainLayoutInsets()
+    }
+
+    private fun handleFabInsets() {
+        val originalRightMargin = fab.marginRight
+        val originalBottomMargin = fab.marginBottom
+        ViewCompat.setOnApplyWindowInsetsListener(fab) { v, insets ->
+            v.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                rightMargin = originalRightMargin + insets.systemWindowInsetRight
+                bottomMargin = originalBottomMargin + insets.systemWindowInsetBottom
+            }
+            insets
+        }
+    }
+
+    private fun handleMainLayoutInsets() {
+        ViewCompat.setOnApplyWindowInsetsListener(mainLayout) { v, insets ->
+            v.updatePadding(
+                    left = insets.systemWindowInsetLeft,
+                    right = insets.systemWindowInsetRight,
+                    top = insets.systemWindowInsetTop,
+                    bottom = insets.systemWindowInsetBottom
+            )
+            insets
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
