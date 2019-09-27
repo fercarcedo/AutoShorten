@@ -17,4 +17,10 @@
     <string name="delete_domain">Eliminar dominio</string>
     <string name="domain_already_exists">El dominio ya existe</string>
     <string name="no_domains">Acortando todos los dominios. Pulsa el botón para elegir solo algunos dominios para acortar</string>
+    <string name="settings">Ajustes</string>
+    <string name="pref_theme_title">Tema</string>
+    <string name="light">Claro</string>
+    <string name="dark">Oscuro</string>
+    <string name="set_by_battery_saver">Establecido por ahorro de batería</string>
+    <string name="system_default">Predeterminado del sistema</string>
 </resources>

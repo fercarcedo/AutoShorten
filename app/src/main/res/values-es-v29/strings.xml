@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="shorten_copy_url_text">Acorta una URL copiada pulsando en la notificación</string>
+    <string name="clipboard_notification_text">Copia un enlace y pulsa para acortarlo</string>
+    <string name="clipboard_notification_ticker">Pulsa para acortar un enlace</string>
+</resources>

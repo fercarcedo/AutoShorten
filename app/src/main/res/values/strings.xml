@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">AutoShorten</string>
     <string name="main_channel">General notifications</string>
     <string name="clipboard_notification_text">Copy a link to automatically shorten it</string>
@@ -19,4 +19,16 @@
     <string name="delete_domain">Delete domain</string>
     <string name="domain_already_exists">Domain already exists</string>
     <string name="no_domains">Shortening all domains. Click the button to choose specific domains to shorten</string>
+    <string name="settings">Settings</string>
+    <string name="pref_theme_key" translatable="false">theme</string>
+    <string name="pref_theme_title">Theme</string>
+    <string name="pref_theme_default" tools:ignore="MissingTranslation">@string/set_by_battery_saver_value</string>
+    <string name="light_value" translatable="false">light</string>
+    <string name="dark_value" translatable="false">dark</string>
+    <string name="set_by_battery_saver_value" translatable="false">set_by_battery_saver</string>
+    <string name="system_default_value" translatable="false">system_default</string>
+    <string name="light">Light</string>
+    <string name="dark">Dark</string>
+    <string name="set_by_battery_saver">Set by battery saver</string>
+    <string name="system_default">System default</string>
 </resources>

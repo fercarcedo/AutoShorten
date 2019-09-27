@@ -52,6 +52,11 @@
             android:label="@string/shorten_url"
             android:theme="@style/DialogTheme" />
 
+        <activity android:name=".ui.SettingsActivity"
+            android:exported="false"
+            android:label="@string/settings"
+            android:parentActivityName=".ui.MainActivity" />
+
         <service
             android:name=".services.ClipboardService"
             android:enabled="true"
