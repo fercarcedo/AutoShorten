@@ -1,0 +1,5 @@
+<resources>
+    <string name="shorten_copy_url_text">Shorten any copied URL by tapping on the notification</string>
+    <string name="clipboard_notification_text">Copy a link and tap to shorten it</string>
+    <string name="clipboard_notification_ticker">Tap to shorten a link</string>
+</resources>

@@ -1,8 +1,13 @@
 package fergaral.autoshorten.util
 
 import android.app.Activity
+import android.content.ClipboardManager
+import android.content.Context
 import android.widget.Toast
 import fergaral.autoshorten.R
+import fergaral.autoshorten.data.repository.DomainRepository
+import fergaral.autoshorten.shorteners.UrlShortenerFactory
+import org.jetbrains.anko.doAsync
 import java.net.URI
 
 /**
@@ -10,6 +15,7 @@ import java.net.URI
  */
 class Utils {
     companion object {
+        @JvmStatic
         fun showShortenError(activity: Activity, handler: () -> Unit) {
             activity.runOnUiThread {
                 handler()
@@ -17,6 +23,7 @@ class Utils {
             }
         }
 
+        @JvmStatic
         fun toDomain(urlString: String): String {
             var url = urlString
             if (!url.startsWith("http://") &&

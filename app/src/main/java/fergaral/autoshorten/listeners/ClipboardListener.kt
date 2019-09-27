@@ -22,10 +22,13 @@ class ClipboardListener @Inject constructor(private val context: Context,
 
     override fun onPrimaryClipChanged() {
         val clipboardText = clipboardManager.getClipboardText(context)
+        shortenUrl(clipboardText)
+    }
 
+    fun shortenUrl(clipboardText: String?) {
         if (clipboardText != null && clipboardText.isURL()) {
             doAsync {
-                if (shortenUrl(Utils.toDomain(clipboardText))) {
+                if (shortenUrl(repository, Utils.toDomain(clipboardText))) {
                     val url = UrlShortenerFactory.getUrlShortener(context).shortenUrl(clipboardText)
                     clipboardManager.copyText(url)
                 }
@@ -33,7 +36,7 @@ class ClipboardListener @Inject constructor(private val context: Context,
         }
     }
 
-    private fun shortenUrl(domainUrl: String): Boolean {
+    private fun shortenUrl(repository: DomainRepository, domainUrl: String): Boolean {
         return !repository.hasDomains() || repository.exists(domainUrl)
     }
 }

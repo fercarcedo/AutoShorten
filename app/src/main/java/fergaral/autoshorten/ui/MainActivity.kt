@@ -1,24 +1,28 @@
 package fergaral.autoshorten.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.preference.PreferenceManager
-import androidx.core.app.ActivityOptionsCompat
-import androidx.core.app.ShareCompat
 import android.view.Menu
 import android.view.View
 import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.app.ShareCompat
 import fergaral.autoshorten.R
 import fergaral.autoshorten.services.ClipboardService
-import fergaral.autoshorten.util.*
+import fergaral.autoshorten.shorteners.UrlShortenerFactory
+import fergaral.autoshorten.util.Utils
+import fergaral.autoshorten.util.hide
+import fergaral.autoshorten.util.isURL
+import fergaral.autoshorten.util.show
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.copy_url_card.*
 import org.jetbrains.anko.activityUiThread
 import org.jetbrains.anko.doAsync
-import android.widget.ArrayAdapter
-import fergaral.autoshorten.shorteners.UrlShortenerFactory
 
 
 class MainActivity : AppCompatActivity() {
@@ -102,6 +106,15 @@ class MainActivity : AppCompatActivity() {
     private fun checkSharedContent(intent: Intent) {
         if (Intent.ACTION_SEND == intent.action) {
             handleSendText(intent)
+        } else {
+            showAndroidQInfoIfFirstUse()
+        }
+    }
+
+    private fun showAndroidQInfoIfFirstUse() {
+        val shownAndroidQInfo = PreferenceManager.getDefaultSharedPreferences(this).getBoolean(ANDROIDQ_INFO, false)
+        if (!shownAndroidQInfo) {
+
         }
     }
 
@@ -109,8 +122,8 @@ class MainActivity : AppCompatActivity() {
         val sharedText = intent.getStringExtra(Intent.EXTRA_TEXT)
         if (sharedText != null && sharedText.isURL()) {
             showProgress()
-            doAsync(exceptionHandler = { _ ->
-                Utils.showShortenError(this, { hideProgress() })
+            doAsync(exceptionHandler = {
+                Utils.showShortenError(this) { hideProgress() }
             }) {
                 val shortUrl = UrlShortenerFactory.getUrlShortener(this@MainActivity).shortenUrl(sharedText)
                 activityUiThread {
@@ -143,5 +156,6 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         val SHORTEN_COPY_KEY = "shorten_copy"
+        val ANDROIDQ_INFO = "androidq_info"
     }
 }

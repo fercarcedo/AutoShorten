@@ -19,6 +19,9 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            multiDexEnabled true
+        }
     }
     buildTypes.each {
         it.buildConfigField 'String', 'GOOGL_API_KEY', GooglApiKey
@@ -34,6 +37,9 @@ android {
 
 kapt {
     generateStubs = true
+    arguments {
+        arg("room.schemaLocation", "$projectDir/schemas")
+    }
 }
 
 dependencies {

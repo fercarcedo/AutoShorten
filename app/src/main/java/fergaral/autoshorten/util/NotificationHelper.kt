@@ -12,6 +12,7 @@ import android.os.Build
 import androidx.core.app.NotificationCompat
 import fergaral.autoshorten.R
 import fergaral.autoshorten.ui.MainActivity
+import fergaral.autoshorten.ui.ShortenUrlFloatingActivity
 
 /**
  * Created by Fer on 27/01/2018.
@@ -36,7 +37,11 @@ internal class NotificationHelper(ctx: Context): ContextWrapper(ctx) {
     }
 
     fun getClipboardNotification(): Notification {
-        val notificationIntent = Intent(this, MainActivity::class.java)
+        val notificationIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            Intent(this, ShortenUrlFloatingActivity::class.java)
+        } else {
+            Intent(this, MainActivity::class.java)
+        }
         val pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT)
         return NotificationCompat.Builder(this, MAIN_CHANNEL)
                 .setSmallIcon(R.mipmap.ic_launcher_foreground)

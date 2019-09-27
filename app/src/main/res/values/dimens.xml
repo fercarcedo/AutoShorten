@@ -8,4 +8,5 @@
     <dimen name="spacing_large">32dp</dimen>
     <dimen name="z_fab">6dp</dimen>
     <dimen name="dialog_corners">2dp</dimen>
+    <dimen name="card_elevation">2dp</dimen>
 </resources>

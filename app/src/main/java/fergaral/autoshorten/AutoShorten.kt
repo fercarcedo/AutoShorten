@@ -3,6 +3,7 @@ package fergaral.autoshorten
 import android.app.Activity
 import android.app.Application
 import android.app.Service
+import androidx.appcompat.app.AppCompatDelegate
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
@@ -23,6 +24,8 @@ class AutoShorten: Application(), HasActivityInjector, HasServiceInjector {
 
     override fun onCreate() {
         super.onCreate()
+
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY)
 
         DaggerAppComponent.builder()
                 .appModule(AppModule(this))

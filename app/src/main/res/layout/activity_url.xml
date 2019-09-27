@@ -29,16 +29,20 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/dialog_title_spacing"
             android:layout_marginStart="@dimen/spacing_normal"
+            android:textColor="?attr/colorOnSurface"
             android:text="@string/shorten_url"
             android:textAppearance="@style/TextAppearance.DialogTitle" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/url_float_label"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:boxStrokeColor="@color/colorAccent"
+            app:hintTextColor="?attr/colorOnSurface"
             android:layout_marginStart="@dimen/spacing_micro">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etURL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -62,16 +66,16 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/padding_normal">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnShorten"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:enabled="false"
+                app:backgroundTint="@color/colorAccent"
+                android:textColor="?attr/colorOnSecondary"
                 android:text="@string/shorten"
                 android:background="@drawable/dialog_button"
-                android:foreground="?attr/selectableItemBackground"
-                android:textAppearance="@style/TextAppearance.DarkButton"
                 android:onClick="shorten" />
 
         </FrameLayout>

@@ -21,5 +21,5 @@ fun ClipboardManager.getClipboardText(context: Context): String? {
 
 fun ClipboardManager.copyText(text: String) {
     val clipData = ClipData.newPlainText(text, text)
-    primaryClip = clipData
+    setPrimaryClip(clipData)
 }

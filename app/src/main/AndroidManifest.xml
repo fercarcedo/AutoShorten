@@ -47,6 +47,11 @@
             android:exported="false"
             android:label="@string/domains_to_shorten" />
 
+        <activity android:name=".ui.ShortenUrlFloatingActivity"
+            android:exported="false"
+            android:label="@string/shorten_url"
+            android:theme="@style/DialogTheme" />
+
         <service
             android:name=".services.ClipboardService"
             android:enabled="true"
