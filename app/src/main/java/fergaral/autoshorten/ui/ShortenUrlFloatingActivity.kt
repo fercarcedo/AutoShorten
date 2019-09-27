@@ -35,7 +35,7 @@ class ShortenUrlFloatingActivity : AppCompatActivity() {
             clipboardManager.getClipboardText(this)?.let { text ->
                 if (text.isURL()) {
                     doAsync(exceptionHandler = {
-                        Utils.showShortenError(this) { finish() }
+                        Utils.showShortenError(this, it) { finish() }
                     }) {
                         val shortUrl = UrlShortenerFactory.getUrlShortener(this@ShortenUrlFloatingActivity).shortenUrl(text)
                         activityUiThread {

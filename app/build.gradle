@@ -32,7 +32,7 @@ android {
         }
     }
     buildTypes.each {
-        it.buildConfigField 'String', 'GOOGL_API_KEY', GooglApiKey
+        it.buildConfigField 'String', 'CUTTLY_API_KEY', CuttlyApiKey
         it.buildConfigField 'String', 'BITLY_API_KEY', BitlyApiKey
     }
     configurations {

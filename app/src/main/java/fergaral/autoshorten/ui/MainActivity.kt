@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.preference.PreferenceManager
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -104,7 +105,7 @@ class MainActivity : AppCompatActivity() {
         if (menu != null) {
             val item = menu.findItem(R.id.spShortener)
             val spinner = item.actionView as Spinner
-            val spinnerItems = listOf("goo.gl", "bit.ly")
+            val spinnerItems = listOf("cutt.ly", "bit.ly")
             val spinnerArrayAdapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,
                     spinnerItems)
             spinnerArrayAdapter.setDropDownViewResource(android.R.layout

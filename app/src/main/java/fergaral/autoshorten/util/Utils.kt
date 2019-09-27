@@ -24,6 +24,14 @@ class Utils {
         }
 
         @JvmStatic
+        fun showShortenError(activity: Activity, t: Throwable, handler: () -> Unit) {
+            activity.runOnUiThread {
+                handler()
+                Toast.makeText(activity, t.toString(), Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        @JvmStatic
         fun toDomain(urlString: String): String {
             var url = urlString
             if (!url.startsWith("http://") &&
